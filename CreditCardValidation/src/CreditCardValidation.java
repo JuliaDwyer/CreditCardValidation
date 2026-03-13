@@ -6,8 +6,13 @@ public class CreditCardValidation {
 
 	boolean valid = false;
 
-	System.out.println("What would you like to do?");System.out.println("1. Enter a credit card number");System.out.println("2. See list of credit card numbers");
-
+	
+	public static void giveOption() {
+		
+	System.out.println("What would you like to do?");
+	System.out.println("1. Enter a credit card number");
+	System.out.println("2. See list of credit card numbers");
+	
 	Scanner choose = new Scanner(System.in);
 	int choice = choose.nextInt();
 
@@ -17,19 +22,26 @@ public class CreditCardValidation {
 		long enteredNum = enterNum.nextLong();
 	}
 		else if(choice== 2) {
+			
+	}
 
-	public static void readCards() throws IOException {
+	
+	
+
+	public static void readCards()  throws IOException {
 		Scanner cardNums = new Scanner(new File("cardNumbers.txt"));
 
 		while (cardNums.hasNext()) {
 
 			long number = cardNums.nextLong();
 			long[] cardNum = new long[16];
-
-			for (long i = 0; i < 16; i++) {
-				//digit stripping to put it into array?
-				cardNum[i] = number;
+			
+			for(int i =0; i<16; i) {
+			long digit = number%10;
+			cardNum[i]=digit;
+			number=number/10;
 			}
+
 
 			System.out.println(cardNum);
 
